@@ -1,0 +1,11 @@
+.txt {
+    font-weight: 600;
+    padding-top: 35px;
+    padding-left: 50px;
+    text-align: justify;
+    width: 500px;
+}
+.txt h1 {
+    text-align: center;
+    padding-bottom: 15px;
+}
