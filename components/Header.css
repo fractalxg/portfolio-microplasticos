@@ -6,4 +6,62 @@
   	position: sticky;
   	top: 0;
 	z-index: 99;
+	
 }
+.nav-content{
+	width: 100%;
+	align-items: center;
+	display: flex;
+	justify-content: right;
+}
+
+.header p {
+	font-size: 18px;
+	color: #fff;
+	padding-right: 30px;
+	font-weight: 600;
+	cursor: pointer;
+	align-items: center;
+	
+}
+.header a {
+	font-size: 18px;
+	color: #fff;
+	padding-right: 30px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+
+}
+.selected-language{
+	margin-top: 64px;
+	font-size: 18px;
+	color: #fff;
+	padding-right: 30px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+}
+.idioma li{
+	list-style: none;
+}
+.idioma ul{
+	visibility: hidden;
+	background-color: #1c1fc9;
+}
+.arrow-down{
+	width: 15px;
+	height: 15px;
+}
+.idioma ul li a {
+	display: block;
+	width: 120px;
+	padding: 5px 20px;
+}
+
+.idioma ul li a:hover {
+	background-color: #000000;
+}
+
+
+
