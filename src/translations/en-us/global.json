@@ -1,0 +1,24 @@
+{   
+    "index": {
+        "title": "Microplastics"
+    },
+    "header": {
+        "language": "Language",
+        "portugueseLanguage": "Portuguese (PT-BR)",
+        "englishLanguage": "English (EN-US)"
+    },
+    "body": {
+        "parallaxText": "MICROPLASTICS",
+        "button": "HOLD"
+    },
+    "content": {
+        "title": "Microplastics",
+        "paragraphOne": "Microplastics are small fragments of plastic commonly found in the environment, resulting from the degradation of larger plastic items or intentionally produced in reduced sizes for use in products such as facial scrubs, personal hygiene products, paints, among others. They are classified into two main categories: primary microplastics, which are manufactured at a tiny size, and secondary microplastics, which result from the breakdown of larger plastics due to exposure to elements such as sunlight, water and mechanical abrasion.",
+        "paragraphTwo": "Studies on microplastics have focused on several areas, including their presence and impact on aquatic and terrestrial ecosystems and human health. Some notable discoveries include:",
+        "paragraphThree": "Widespread Presence: Microplastics have been detected in different environments, from oceans to terrestrial food chains. They have been found in drinking water, marine foods, soils and even the air.",
+        "paragraphFour": "Impact on Aquatic Ecosystems: Marine organisms such as fish, shellfish and plankton can accidentally ingest microplastics, leading to negative effects on their growth, reproduction and survival. Additionally, microplastics can carry toxic chemicals, resulting in an additional impact on aquatic ecosystems.",
+        "paragraphFive": "Impact on Human Health: Although still being studied, there are growing concerns about the potential impact of microplastics on human health. Microscopic particles can be inhaled or ingested by humans through water, food or even air, raising questions about possible health effects such as inflammation, oxidative stress and possible carcinogenic effects.",
+        "paragraphSix": "Solutions and Mitigations: Several approaches are being considered to address the microplastics problem, including a ban on plastic microbeads in personal care products, technologies for filtering microplastics in water treatment plants, better waste management, and efforts to reduce use of disposable plastics.",
+        "paragraphSeven": "Additional studies are underway to better understand the extent of the impact of microplastics, the mechanisms of transport, accumulation and interactions of these materials in different environments, as well as to develop more effective and comprehensive solutions to mitigate this growing environmental problem."
+    }
+}

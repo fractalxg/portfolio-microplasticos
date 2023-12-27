@@ -8,16 +8,12 @@ import {
   useMotionValue,
   useVelocity,
   useAnimationFrame,
-  stagger, 
-  animate
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
-import img5 from "../imgs/img 5.svg";
-import img4 from "../imgs/img 4.svg";
-import img3 from "../imgs/img 3.svg";
-import img2 from "../imgs/img 2.svg";
-import img1 from "../imgs/img 1.svg";
+
 import Content from "./Content";
+
+import { useTranslation } from "react-i18next";
 
 function ParallaxText({ children, baseVelocity = 100, speedMultiplier }) {
   const baseX = useMotionValue(0);
@@ -76,6 +72,7 @@ const hide = {
 };
 
 export default function App() {
+  const [t, i18n] = useTranslation("global")
 
   const [speedMultiplier, setSpeedMultiplier] = useState(1); // Estado e função para controlar a velocidade ao segurar a div scroll
   
@@ -150,16 +147,16 @@ export default function App() {
         <section className="overlay">
           {/* Passando speedMultiplier como prop para ParallaxText */}
           <ParallaxText baseVelocity={-3} speedMultiplier={speedMultiplier}>
-            <h1>MICROPLÁSTICOS</h1>
+            <h1>{t("body.parallaxText")}</h1>
           </ParallaxText>
           <ParallaxText baseVelocity={3} speedMultiplier={speedMultiplier}>
-            <h1>MICROPLÁSTICOS</h1>
+            <h1>{t("body.parallaxText")}</h1>
           </ParallaxText>
           <ParallaxText baseVelocity={-3} speedMultiplier={speedMultiplier}>
-            <h1>MICROPLÁSTICOS</h1>
+            <h1>{t("body.parallaxText")}</h1>
           </ParallaxText>
           <ParallaxText baseVelocity={3} speedMultiplier={speedMultiplier}>
-            <h1>MICROPLÁSTICOS</h1>
+            <h1>{t("body.parallaxText")}</h1>
           </ParallaxText>
         </section>
       </motion.div>
@@ -176,7 +173,7 @@ export default function App() {
           onTouchEnd={() => resetSpeed()}
           
        >
-          SEGURE
+        {t("body.button")}
         </motion.div>
 
         

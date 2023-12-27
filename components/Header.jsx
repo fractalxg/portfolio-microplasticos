@@ -1,10 +1,17 @@
 import "./Header.css"
 import { IoMdArrowDropdown } from "react-icons/io";
 import {useRef, useState, useEffect} from "react";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const [t, i18n] = useTranslation("global")
   const languageRef = useRef(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(null)
+
+  const handleChangeLanguage = (lang) => {
+    i18n.changeLanguage(lang)
+    showHide()
+  }
 
   const showHide = () => {
 
@@ -20,18 +27,19 @@ const Header = () => {
 
   }
 
-  const handleClickOutside = (event) => {
-    if (languageRef.current && !languageRef.current.contains(event.target)) {
+  const handleClickOutside = () => {
+    if (visible) {
       setVisible(false);
+      showHide()
     }
   };
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [visible]);
   
   return (
     <div className="header">
@@ -40,10 +48,10 @@ const Header = () => {
           Home
         </a>
         <div ref={languageRef} className="idioma">
-        <div onClick={() => showHide()} className="selected-language">Idioma <IoMdArrowDropdown className="arrow-down"/></div>
+        <div onClick={() => showHide()} className="selected-language">{t("header.language")} <IoMdArrowDropdown className="arrow-down"/></div>
           <ul className="dropdown">
-            <li><a>Português (PT-BR)</a></li>
-            <li><a>Inglês (EN-US)</a></li>
+            <li onClick={() => handleChangeLanguage("pt-br")}><a>{t("header.portugueseLanguage")}</a></li>
+            <li onClick={() => handleChangeLanguage("en-us")}><a>{t("header.englishLanguage")}</a></li>
           </ul>
         </div>
       </nav>      
