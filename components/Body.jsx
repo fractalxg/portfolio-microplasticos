@@ -1,5 +1,5 @@
 import "./body.css";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -8,44 +8,45 @@ import {
   useMotionValue,
   useVelocity,
   useAnimationFrame,
-} from "framer-motion";
-import { wrap } from "@motionone/utils";
+  useAnimation,
+} from "framer-motion"
+import { wrap } from "@motionone/utils"
 
-import Content from "./Content";
+import Content from "./Content"
 
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"
 
 function ParallaxText({ children, baseVelocity = 100, speedMultiplier }) {
-  const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
+  const baseX = useMotionValue(0)
+  const { scrollY } = useScroll()
+  const scrollVelocity = useVelocity(scrollY)
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
     stiffness: 400
-  });
+  })
   const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
     clamp: false
-  });
+  })
 
-  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`)
 
-  const directionFactor = useRef(1);
+  const directionFactor = useRef(1)
 
   // Movimento do parallax de acordo com a velocidade ao segurar a div scroll
   useAnimationFrame((t, delta) => {
     let moveBy =
-      directionFactor.current * speedMultiplier * baseVelocity * (delta / 1000);
+      directionFactor.current * speedMultiplier * baseVelocity * (delta / 1000)
 
     if (velocityFactor.get() < 0) {
-      directionFactor.current = -1;
+      directionFactor.current = -1
     } else if (velocityFactor.get() > 0) {
-      directionFactor.current = 1;
+      directionFactor.current = 1
     }
 
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+    moveBy += directionFactor.current * moveBy * velocityFactor.get()
 
-    baseX.set(baseX.get() + moveBy);
-  });
+    baseX.set(baseX.get() + moveBy)
+  })
 
   return (
     <div className="parallax">
@@ -56,39 +57,32 @@ function ParallaxText({ children, baseVelocity = 100, speedMultiplier }) {
         <span>{children} </span>
       </motion.div>
     </div>
-  );
+  )
 }
-
-const show = {
-  opacity: 1,
-  display: "block"
-};
-
-const hide = {
-  opacity: 0,
-  transitionEnd: {
-    display: "none"
-  }
-};
 
 export default function App() {
   const [t, i18n] = useTranslation("global")
 
-  const [speedMultiplier, setSpeedMultiplier] = useState(1); // Estado e função para controlar a velocidade ao segurar a div scroll
+  const [speedMultiplier, setSpeedMultiplier] = useState(1) // Estado e função para controlar a velocidade ao segurar a div scroll
   
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
-  const [timer, setTimer] = useState(null);
-  const startTimeRef = useRef(null);
+  const [visible, setVisible] = useState(false)
+  const controls = useAnimation()
 
   const increaseSpeed = () => {
-    setSpeedMultiplier(10); // Aumenta a velocidade ao segurar a div scroll
+    setSpeedMultiplier(10) // Aumenta a velocidade ao segurar a div scroll
+    
 
-    startTimeRef.current = Date.now();
-    setTimer(setTimeout(() => {
-      if (Date.now() - startTimeRef.current >= 4000) {
+    const timer = Date.now()
 
-        console.log('Usuário manteve o botão pressionado por mais de 4 segundos!')
+    setTimeout(() => {
+      setVisible(true)
+    }, 3000)
+
+    setTimeout(() => {
+      
+      if (Date.now() - timer >= 4000) {
 
         const text = containerRef.current.getElementsByClassName('text')
         const button = containerRef.current.getElementsByClassName('scroll')
@@ -96,34 +90,29 @@ export default function App() {
         const content = containerRef.current.getElementsByClassName('content')
 
         if (text.length > 0) {
-          text[0].style.display = "none";
+          text[0].style.display = "none"
           
           if (button.length > 0) {
-            button[0].style.display = "none";
+            button[0].style.display = "none"
 
             if (animation.length > 0){
-              animation[0].style.display = "block";
+              animation[0].style.display = "block"
 
                 if (content.length > 0){
                   content[0].style.display = "flex"
-              };
-            
-              
-              
+                } 
             }
           }
-
-         
         }
       }
-    }, 4000));
+    }, 4000);
+
+    
 
   };
   const resetSpeed = () => {
     setSpeedMultiplier(1); // Aumenta a velocidade ao segurar a div scroll
   };
-
-
 
   const reduce = {
     width:60,
@@ -136,14 +125,22 @@ export default function App() {
     transitionEnd: {display: "none"}
   }
 
-  const show = {
-    opacity: 1,
-    transition: { delay: 4, duration: 2},
+  const hidden = {
+    opacity: 0,
+    transition: { duration: 1},
   }
+
+  useEffect(() => {
+    if (visible) {
+      controls.start(hidden);
+    }
+  }, [controls, visible]);
 
   return (
     <div ref={containerRef} className="container">
-      <motion.div className="text" >
+      <motion.div
+      animate={controls}
+      className="text">
         <section className="overlay">
           {/* Passando speedMultiplier como prop para ParallaxText */}
           <ParallaxText baseVelocity={-3} speedMultiplier={speedMultiplier}>
@@ -186,52 +183,50 @@ export default function App() {
         <motion.div 
  
         className="content">
-          <div className="card-container">
+          <motion.div 
+          className="card-container">
+
             <motion.div 
-            style={{backgroundImage: "url(../imgs/picture-1.png)", backgroundSize:"300%"}}
-            initial={{opacity:0, translateX: -50}}
-            animate={{opacity: 1, translateX: 0, translateY: 1}}
-            transition={{duration: 0.3, delay: 9}}
-            
-            className="card">
+              style={{backgroundImage: "url(../imgs/picture-1.png)", backgroundSize:"300%"}}
+              initial={{opacity:0, translateX: -50}}
+              animate={{opacity: 1, translateX: 0, translateY: 1}}
+              transition={{duration: 0.3, delay: 9}}   
+              className="card">
             </motion.div>
 
             <motion.div 
-            style={{backgroundImage: "url(../imgs/picture-6.png)", backgroundSize:"200%"}}
-            initial={{opacity:0, translateX: -50}}
-            animate={{opacity: 1, translateX: 0, translateY: 1}}
-            transition={{duration: 0.3, delay: 9.5}}
-            className="card">
+              style={{backgroundImage: "url(../imgs/picture-6.png)", backgroundSize:"200%"}}
+              initial={{opacity:0, translateX: -50}}
+              animate={{opacity: 1, translateX: 0, translateY: 1}}
+              transition={{duration: 0.3, delay: 9.5}}
+              className="card">
             </motion.div>
 
             <motion.div 
-            style={{backgroundImage: "url(../imgs/picture-3.png)"}}
-            initial={{opacity:0, translateX: -50}}
-            animate={{opacity: 1, translateX: 0, translateY: 1}}
-            transition={{duration: 0.3, delay: 10}}
-        
-            className="card">
+              style={{backgroundImage: "url(../imgs/picture-3.png)"}}
+              initial={{opacity:0, translateX: -50}}
+              animate={{opacity: 1, translateX: 0, translateY: 1}}
+              transition={{duration: 0.3, delay: 10}}          
+              className="card">
+            </motion.div>
+
+            <motion.div 
+              style={{backgroundImage: "url(../imgs/picture-5.png)", backgroundSize:"300%"}}
+              initial={{opacity:0, translateX: -50}}
+              animate={{opacity: 1, translateX: 0, translateY: 1}}
+              transition={{duration: 0.3, delay: 10.5}}
+              className="card">
+            </motion.div>
+
           </motion.div>
-
-            <motion.div 
-            style={{backgroundImage: "url(../imgs/picture-5.png)", backgroundSize:"300%"}}
-            initial={{opacity:0, translateX: -50}}
-            animate={{opacity: 1, translateX: 0, translateY: 1}}
-            transition={{duration: 0.3, delay: 10.5}}
- 
-            className="card">
-
-            </motion.div>
-
-          </div>
 
 
           <motion.div 
-          initial={{opacity:0, translateX: -50}}
-          animate={{opacity: 1, translateX: 0, translateY: 1}}
-          transition={{duration: 1, delay: 11}}
-          className="text-content">
-            <Content />
+            initial={{opacity:0, translateX: -50}}
+            animate={{opacity: 1, translateX: 0, translateY: 1}}
+            transition={{duration: 1, delay: 11}}
+            className="text-content">
+              <Content />
           </motion.div>
 
       </motion.div>
