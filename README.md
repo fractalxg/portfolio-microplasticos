@@ -1,7 +1,7 @@
-![home-pt-br](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/701defc0-c0d5-4b5e-ae99-910b76e39da3)
-![content-pt-br](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/49767429-7a41-4723-803b-45aed47d3f59)
+![home-pt](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/79145ab7-154b-4110-ac95-b0ee69f136f6)
+![content-pt](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/43e1f96c-6a73-4716-8dc3-8d78652c99bc)
 
-![home-en-us](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/cfe1434d-d598-46af-afe7-3a4241cfbaa4)
-![content-en-us](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/2d0d1922-c585-478c-ae6d-36c3d2235985)
+![home-en](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/72231c41-f843-4fdc-8a6a-ecb977a73ba3)
+![content-en](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/43852909-58f9-4683-b212-00edebd16626)
 
-Aplicação web sobre conscientização de microplásticos
+Aplicação web (e com responsividade para dispositivos móveis) sobre conscientização de microplásticos
