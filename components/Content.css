@@ -1,11 +1,27 @@
 .txt {
     font-weight: 600;
-    padding-top: 35px;
-    padding-left: 50px;
+    padding-top: 80px;
     text-align: justify;
-    width: 500px;
+    width: 100%;
+    padding-bottom: 50px;
+}
+.txt p {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .txt h1 {
     text-align: center;
     padding-bottom: 15px;
+}
+@media screen and (max-width: 450px){
+    .txt p {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+@media screen and (max-width: 330px){
+    .txt p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }

@@ -31,7 +31,7 @@
   }
 
 .overlay{
-	background-image: url("../imgs/microplastics.svg");
+	background-image: url("../imgs/microplastics.png");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -85,13 +85,13 @@
 
 .content{
 	display: none;
-	width: 100vw;
-	height: 65vh;
-	position: absolute;
+	margin-top: -68vh;
 	justify-content: center;
-	margin-top: -15vh;
-
 }
+.cards-text{
+	display: flex;
+}
+
 .card-container {
 	display: block;
 }
@@ -109,8 +109,47 @@
 	background-size: 150%;
 }
 
-.image{
-	border-radius: 10px;
-	width: 130px;
-	height: 130px;
+
+@media screen and (max-width: 890px) {
+	.container {
+		height: 120vh;
+	}
+
+	.cards-text{
+		display: grid;
+	}
+	.cards-text-01{
+		display: grid;
+	}
+	.cards-text-02{
+		display: grid;
+	}
+
+	.card-container{
+		display: flex;
+		justify-content: center;
+		gap: 20px;
+	}
+
+	.card{
+		width: 200px;
+		height: 150px;
+	}
+
+	.text-content {
+		display: flex;
+		justify-content: center;
+	}
+
+}
+
+@media screen and (max-width: 550px) {
+	.container {
+		height: 130vh;
+	}
+
+	.card{
+		width: 150px;
+		height: 100px;
+	}
 }

@@ -27,12 +27,12 @@ const Header = () => {
 
   }
 
-  const handleClickOutside = () => {
-    if (visible) {
-      setVisible(false);
-      showHide()
-    }
-  };
+  // const handleClickOutside = () => {
+  //   if (visible) {
+  //     setVisible(false);
+  //     showHide()
+  //   }
+  // };
 
   // useEffect(() => {
   //   document.addEventListener("mousedown", handleClickOutside);
