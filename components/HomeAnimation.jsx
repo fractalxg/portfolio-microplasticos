@@ -30,7 +30,7 @@ const HomeAnimation = () => {
 
 	const reduceOpacity = {
     opacity: 0,
-    transition: { duration: 1 },
+    transition: { duration: 2 },
   }
 
   //Animations
@@ -42,53 +42,76 @@ const HomeAnimation = () => {
   }, [visible])
 
 
+let timeout
+
+const holdButton = () => {
+
+  timeout = setTimeout(() => {
+    setVisible(true)
+
+  }, 2000)
+  
+  timeout = setTimeout(() => {
+    setRemovable(false)
+
+  }, 4000)
+  
+}
+
+const releaseButton = () => {
+  clearTimeout(timeout) 
+  setVisible(false)
+  setRemovable(true)
+}
 
 
 	const increaseSpeed = () => {
 		setSpeedMultiplier(10)
+    holdButton()
 
-    const timer = Date.now()
+    // const timer = Date.now()
 
-    setTimeout(() => {
-      if (Date.now() - timer >= 3000) {
-        setVisible(true);
-      }
+    // setTimeout(() => {
+    //   if (Date.now() - timer >= 2000) {
+    //     setVisible(true);
+    //   }
 
-    }, 3000)
+    // }, 2000)
 
-    setTimeout(() => {
-      if (Date.now() - timer >= 4000){
-        setRemovable(false)
-      }
-    }, 4000)
+    // setTimeout(() => {
+    //   if (Date.now() - timer >= 4000){
+    //     setRemovable(false)
+    //   }
+    // }, 4000)
 	}
 
   const resetSpeed = () => {
     setSpeedMultiplier(1)
+    releaseButton()
   }
 
-  
+
 
 	const RemovableParallaxText = () => {
 		return(
 			<motion.div animate={animationControl} className="parallax-text">
-            
+
             <ParallaxText baseVelocity={-3} speedMultiplier={speedMultiplier}>
               <h1>{t("body.parallaxText")}</h1>
             </ParallaxText>
-  
+
             <ParallaxText baseVelocity={3} speedMultiplier={speedMultiplier}>
               <h1>{t("body.parallaxText")}</h1>
             </ParallaxText>
-  
+
             <ParallaxText baseVelocity={-3} speedMultiplier={speedMultiplier}>
               <h1>{t("body.parallaxText")}</h1>
             </ParallaxText>
-  
+
             <ParallaxText baseVelocity={3} speedMultiplier={speedMultiplier}>
               <h1>{t("body.parallaxText")}</h1>
             </ParallaxText>
-            
+
         </motion.div>
 		)
 	}
@@ -112,7 +135,7 @@ const HomeAnimation = () => {
         </motion.div>
     )
   }
-	
+
 	return (
 
       <div>
@@ -120,7 +143,7 @@ const HomeAnimation = () => {
           <div className="button-container">
             {removable && <RemovableButton />}
           </div>
-        {!removable && 
+        {!removable &&
         <div className="content-container">
 
             <div className="images-container">
@@ -149,7 +172,7 @@ const HomeAnimation = () => {
 
             </motion.div>
             </div>
-            
+
             <div className="bottom-image-container">
             <motion.div
               style={{ backgroundImage: "url(../imgs/picture-3.png)" }}
@@ -169,13 +192,13 @@ const HomeAnimation = () => {
               animate={{ opacity: 1, translateY: 0}}
               transition={{ duration: 1, delay: 1.2 }}
               className="card-image">
-                
+
             </motion.div>
             </div>
-            
+
             </div>
-            
-            
+
+
             <motion.div
               initial={{ opacity: 0, translateX: -50 }}
               animate={{ opacity: 1, translateX: 0 }}
@@ -202,15 +225,15 @@ const HomeAnimation = () => {
               animate={{ opacity: 1, translateY: 0}}
               transition={{ duration: 1, delay: 2.5 }}
               className="card-image">
-                
+
             </motion.div>
             </div>
-            
+
         </div>
         }
 		  </div>
 
 		)
 	}
-	
+
 	export default HomeAnimation
