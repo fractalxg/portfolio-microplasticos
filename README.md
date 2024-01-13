@@ -3,6 +3,7 @@ Aplicação Web em ReactJS sobre a conscientização de microplásticos e seus e
 
 ## Funcionalidades
 * Animação de texto utilizando parallax.
+* Idioma: português e inglês.
 
 ## Screenshots
 ![home-pt](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/79145ab7-154b-4110-ac95-b0ee69f136f6)
