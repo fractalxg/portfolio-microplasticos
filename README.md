@@ -1,5 +1,10 @@
-Aplicação Web em React (e com responsividade para dispositivos móveis) sobre a conscientização de microplásticos.
+## Descrição
+Aplicação Web em ReactJS sobre a conscientização de microplásticos e seus efeitos no ecossistema.
 
+## Funcionalidades
+* Animação de texto utilizando parallax.
+
+## Screenshots
 ![home-pt](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/79145ab7-154b-4110-ac95-b0ee69f136f6)
 ![content-pt](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/43e1f96c-6a73-4716-8dc3-8d78652c99bc)
 
