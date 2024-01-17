@@ -6,10 +6,12 @@ Aplicação Web em ReactJS sobre a conscientização de microplásticos e seus e
 * Idioma: português e inglês.
 
 ## Screenshots
-![home-pt](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/79145ab7-154b-4110-ac95-b0ee69f136f6)
-![content-pt](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/43e1f96c-6a73-4716-8dc3-8d78652c99bc)
+* Web
 
-![home-en](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/72231c41-f843-4fdc-8a6a-ecb977a73ba3)
-![content-en](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/43852909-58f9-4683-b212-00edebd16626)
+![Microplásticos - Web](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/c0203c9b-b147-4ec9-84d7-ca1d9165916b)
+
+* Mobile
+
+![Microplásticos - Mobile](https://github.com/fractalxg/portfolio-microplasticos/assets/147837025/41a747ad-5012-4dcd-afab-6deaf1bca88e)
 
 
